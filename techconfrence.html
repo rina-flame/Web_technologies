@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tech Conference Registration</title>
+<style>
+body { font-family: Arial, sans-serif; background: #fdf8ef; padding: 20px; color: #222; }
+form { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; border: 1px solid #e9e1d1; }
+fieldset { border: 1px solid #e9e1d1; border-radius: 6px; margin-bottom: 15px; padding: 15px; }
+legend { background: #f5efe3; padding: 4px 10px; border-radius: 20px; font-size: 14px; }
+label { display: block; margin-top: 10px; }
+input, select, textarea { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; }
+input:focus, select:focus, textarea:focus, button:focus { outline: 3px solid #a3d1ff; }
+button { padding: 10px 15px; background: #222; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 10px; }
+.skip { position: absolute; left: -9999px; background: black; color: white; padding: 8px; }
+.skip:focus { left: 10px; top: 10px; }
+</style>
+</head>
+<body>
+
+<a href="#form" class="skip">Skip to form</a>
+
+<h2 style="text-align:center;">Tech Conference 2025 Registration</h2>
+
+<form id="form" action="/register" method="POST">
+
+<fieldset>
+<legend>Personal Details</legend>
+
+<label for="fullname">Full Name *</label>
+<input type="text" id="fullname" name="fullname" required aria-required="true">
+
+<label for="email">Email *</label>
+<input type="email" id="email" name="email" required aria-required="true">
+</fieldset>
+
+<fieldset>
+<legend>Dietary Preferences</legend>
+
+<input type="checkbox" id="veg" name="diet" value="veg">
+<label for="veg" style="display:inline;">Vegetarian</label><br>
+
+<input type="checkbox" id="vegan" name="diet" value="vegan">
+<label for="vegan" style="display:inline;">Vegan</label><br>
+
+<input type="checkbox" id="halal" name="diet" value="halal">
+<label for="halal" style="display:inline;">Halal</label><br>
+
+<input type="checkbox" id="none" name="diet" value="none">
+<label for="none" style="display:inline;">No Preference</label>
+</fieldset>
+
+<fieldset>
+<legend>Accessibility Needs</legend>
+<label for="access">Please tell us your accessibility needs</label>
+<textarea id="access" name="access" rows="3" placeholder="Any assistance needed"></textarea>
+</fieldset>
+
+<fieldset>
+<legend>Workshop Selection *</legend>
+<p style="font-size:13px;">Choose one workshop</p>
+
+<input type="radio" id="w1" name="workshop" value="web" required aria-required="true">
+<label for="w1" style="display:inline;">Web Development Basics</label><br>
+
+<input type="radio" id="w2" name="workshop" value="ai">
+<label for="w2" style="display:inline;">AI and Machine Learning</label><br>
+
+<input type="radio" id="w3" name="workshop" value="cloud">
+<label for="w3" style="display:inline;">Cloud Computing</label><br>
+
+<input type="radio" id="w4" name="workshop" value="uiux">
+<label for="w4" style="display:inline;">UI UX Design</label>
+</fieldset>
+
+<fieldset>
+<legend>T Shirt Size</legend>
+<label for="size">Select Size *</label>
+<select id="size" name="size" required aria-required="true">
+<option value="">Select size</option>
+<optgroup label="Adult">
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</optgroup>
+<optgroup label="Youth">
+<option>Youth S</option>
+<option>Youth M</option>
+<option>Youth L</option>
+</optgroup>
+</select>
+</fieldset>
+
+<button type="submit">Register Now</button>
+
+</form>
+
+</body>
+</html>

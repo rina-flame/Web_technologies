@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Checkout Form</title>
+<style>
+body { font-family: Arial, sans-serif; background: #e6f2ff; padding: 20px; }
+form { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+fieldset { border: 2px solid #a3d1ff; border-radius: 6px; margin-bottom: 15px; padding: 15px; }
+legend { background: #a3d1ff; padding: 4px 10px; border-radius: 4px; }
+label { display: block; margin-top: 10px; }
+input, select { width: 100%; padding: 8px; margin-top: 4px; }
+button { padding: 10px 15px; margin-top: 10px; background: #a3d1ff; border: none; border-radius: 4px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Checkout Form</h2>
+
+<form action="/checkout" method="POST">
+
+<fieldset>
+<legend>Shipping Address</legend>
+
+<label for="name">Full Name *</label>
+<input type="text" id="name" name="name" required>
+
+<label for="street">Street Address *</label>
+<input type="text" id="street" name="street" required>
+
+<label for="city">City *</label>
+<input type="text" id="city" name="city" required>
+
+<label for="postal">Postal Code *</label>
+<input type="text" id="postal" name="postal" required pattern="[0-9]{5}" title="5 digits only">
+
+<label for="country">Country *</label>
+<input list="countries" id="country" name="country" required>
+<datalist id="countries">
+<option value="Pakistan">
+<option value="India">
+<option value="China">
+<option value="USA">
+<option value="UK">
+<option value="Turkey">
+</datalist>
+
+<label for="phone">Phone *</label>
+<input type="tel" id="phone" name="phone" required>
+</fieldset>
+
+<fieldset>
+<legend>Payment Method</legend>
+
+<label>Select Payment Method *</label>
+<input type="radio" id="cc" name="payment" value="credit" required> <label for="cc" style="display:inline;">Credit Card</label><br>
+<input type="radio" id="pp" name="payment" value="paypal"> <label for="pp" style="display:inline;">PayPal</label><br>
+<input type="radio" id="cod" name="payment" value="cod"> <label for="cod" style="display:inline;">Cash on Delivery</label>
+
+<label for="paytype">Payment Type Group</label>
+<select id="paytype" name="paytype">
+<optgroup label="Online">
+<option>Credit Card</option>
+<option>PayPal</option>
+</optgroup>
+<optgroup label="Offline">
+<option>Cash on Delivery</option>
+</optgroup>
+</select>
+
+<label for="card">Card Number</label>
+<input type="text" id="card" name="card" pattern="[0-9]{16}" title="16 digits">
+
+<label for="expiry">Card Expiry</label>
+<input type="date" id="expiry" name="expiry">
+
+<label for="cvv">CVV</label>
+<input type="text" id="cvv" name="cvv" pattern="[0-9]{3}" title="3 digits">
+</fieldset>
+
+<fieldset>
+<legend>Order Review</legend>
+
+<label for="qty">Quantity</label>
+<input type="number" id="qty" name="qty" value="1" min="1">
+
+<label for="price">Unit Price</label>
+<input type="number" id="price" name="price" value="10" min="0" step="0.01">
+
+<p><strong>Total: $</strong> <output id="total" for="qty price">10.00</output></p>
+</fieldset>
+
+<button type="submit">Place Order</button>
+<button type="reset">Reset</button>
+
+</form>
+
+<script>
+const qty = document.getElementById('qty');
+const price = document.getElementById('price');
+const total = document.getElementById('total');
+function updateTotal() {
+  total.value = (qty.value * price.value).toFixed(2);
+}
+qty.addEventListener('input', updateTotal);
+price.addEventListener('input', updateTotal);
+</script>
+
+</body>
+</html>
